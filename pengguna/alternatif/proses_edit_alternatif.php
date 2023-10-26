@@ -21,3 +21,8 @@ $sql=mysqli_query($dbh,"UPDATE alternatif set nama_alternatif = '$nama', jenis_t
 
 
  ?>
+
+
+
+
+ 

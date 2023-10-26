@@ -10,3 +10,7 @@ $sql = mysqli_query($dbh,"delete from alternatif where id_alternatif='$id'") or 
 			echo "<script>alert('Data Alternatif Gagal Dihapus');document.location='data_alternatif.php' </script> ";
 		}
 ?>
+
+
+
+

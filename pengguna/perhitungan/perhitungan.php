@@ -88,89 +88,79 @@ include "../../koneksi.php";
                             
                             <td><?php echo $data['nama_alternatif'] ?></td>
                             <td>
-                                <?php 
-                                if ($data['jenis_tanah'] == "Tanah Gambut") {
-                                    $sub1[$x] = 1;
-                                    echo $sub1[$x];
-                                }elseif ($data['jenis_tanah'] =="Tanah Organosol/Gleyhumus") {
-                                    $sub1[$x] = 2;
-                                    echo $sub1[$x];
-                                }elseif ($data['jenis_tanah'] =="Tanah Podsoik/Merah Kuning") {
-                                    $sub1[$x] = 3;
-                                    echo $sub1[$x];
-                                }elseif ($data['jenis_tanah'] =="Tanah Aluvial") {
-                                    $sub1[$x] = 4;
-                                    echo $sub1[$x];
+                                <?php
+                                $subkriteria1 = "select * from sub_kriteria where id_kriteria = '2'";
+                                foreach ($dbh->query($subkriteria1) as $subkriteria) {
+                                    if ($data['jenis_tanah'] == $subkriteria['nama_subkriteria']) {
+                                        $sub1[$x] = $subkriteria['nilai_subkriteria'];
+                                        echo $subkriteria['nilai_subkriteria'];
+                                    }
                                 }
+                             
+                                
+                                 ?>
+                            </td>
+
+                            <td>
+                                <?php
+                                //memanggil subkriteria dan nilai berdasarkan alternatif
+                                
+                                $subkriteria1 = "select * from sub_kriteria where id_kriteria = '3'";
+                                foreach ($dbh->query($subkriteria1) as $subkriteria) {
+                                    if ($data['ph_tanah'] == $subkriteria['nama_subkriteria']) {
+                                        $sub2[$x] = $subkriteria['nilai_subkriteria']; 
+                                        echo $subkriteria['nilai_subkriteria'];
+                                    }
+                                } 
+                                
+                                 ?>
+                            </td>
+
+                            <td>
+                                <?php
+                                //memanggil subkriteria dan nilai berdasarkan alternatif
+                                
+                                $subkriteria1 = "select * from sub_kriteria where id_kriteria = '4'";
+                                foreach ($dbh->query($subkriteria1) as $subkriteria) {
+                                    if ($data['curah_hujan'] == $subkriteria['nama_subkriteria']) {
+                                        $sub3[$x] = $subkriteria['nilai_subkriteria']; 
+                                        echo $subkriteria['nilai_subkriteria'];
+                                    }
+                                }  
+                                
                                  ?>
                             </td>
 
                             <td>
                                 <?php 
-                                if ($data['ph_tanah'] == "< 4,5") {
-                                    $sub2[$x] = 1;
-                                    echo $sub2[$x];
-                                }elseif ($data['ph_tanah'] =="4,6 - 5,5") {
-                                    $sub2[$x] = 2;
-                                    echo $sub2[$x];
-                                }elseif ($data['ph_tanah'] =="5,6 - 6,5") {
-                                    $sub2[$x] = 3;
-                                    echo $sub2[$x];
-                                }elseif ($data['ph_tanah'] =="> 6,6") {
-                                    $sub2[$x] = 4;
-                                    echo $sub2[$x];
-                                }
-                                 ?>
+                                //memanggil subkriteria dan nilai berdasarkan alternatif
+                                
+                                $subkriteria1 = "select * from sub_kriteria where id_kriteria = '5'";
+                                foreach ($dbh->query($subkriteria1) as $subkriteria) {
+                                    if ($data['suhu'] == $subkriteria['nama_subkriteria']) {
+                                        $sub4[$x] = $subkriteria['nilai_subkriteria']; 
+                                        echo $subkriteria['nilai_subkriteria'];
+                                    }
+                                } 
+
+
+
+                                ?>
                             </td>
 
                             <td>
-                                <?php 
-                                if ($data['curah_hujan'] == "< 200 mm") {
-                                    $sub3[$x] = 1;
-                                    echo $sub3[$x];
-                                }elseif ($data['curah_hujan'] =="201 mm - 400 mm") {
-                                    $sub3[$x] = 2;
-                                    echo $sub3[$x];
-                                }elseif ($data['curah_hujan'] =="> 401 mm") {
-                                    $sub3[$x] = 3;
-                                    echo $sub3[$x];
-                                }
-                                 ?>
-                            </td>
+                                <?php
+                                //memanggil subkriteria dan nilai berdasarkan alternatif
+                                
+                                $subkriteria1 = "select * from sub_kriteria where id_kriteria = '6'";
+                                foreach ($dbh->query($subkriteria1) as $subkriteria) {
+                                    if ($data['irigasi'] == $subkriteria['nama_subkriteria']) {
+                                        $sub5[$x] = $subkriteria['nilai_subkriteria']; 
+                                        echo $subkriteria['nilai_subkriteria'];
+                                    }
+                                } 
 
-                            <td>
-                                <?php 
-                                if ($data['suhu'] == "< 16 °C") {
-                                    $sub4[$x] = 5;
-                                    echo $sub4[$x];
-                                }elseif ($data['suhu'] =="16-22 °C") {
-                                    $sub4[$x] = 4;
-                                    echo $sub4[$x];
-                                }elseif ($data['suhu'] =="23-28 °C") {
-                                    $sub4[$x] = 3;
-                                    echo $sub4[$x];
-                                }elseif ($data['suhu'] =="29-34 °C") {
-                                    $sub4[$x] = 2;
-                                    echo $sub4[$x];
-                                }elseif ($data['suhu'] ==">35 °C") {
-                                    $sub4[$x] = 1;
-                                    echo $sub4[$x];
-                                }
-                                 ?>
-                            </td>
-
-                            <td>
-                                <?php 
-                                if ($data['irigasi'] == "Irigasi Permukaan") {
-                                    $sub5[$x] = 1;
-                                    echo $sub5[$x];
-                                }elseif ($data['irigasi'] =="Perairan dengan Pompa Air") {
-                                    $sub5[$x] = 2;
-                                    echo $sub5[$x];
-                                }elseif ($data['irigasi'] =="Irigasi tadah hujan") {
-                                    $sub5[$x] = 3;
-                                    echo $sub5[$x];
-                                }
+                                
                                  ?>
                             </td>
                             
@@ -311,7 +301,7 @@ include "../../koneksi.php";
                                  <tbody>
                                     <?php 
 
-                                                            $x=0;
+                                $x=0;
                                 $no = 1;
                                 $sql = "SELECT * FROM alternatif";
                                 foreach ($dbh->query($sql) as $data) :
@@ -433,26 +423,7 @@ include "../../koneksi.php";
     $m++;
     endforeach;
 
-    // for ($baris=0; $baris < $banyak ; $baris++) { 
-    //         for ($kolom=0; $kolom < $banyak ; $kolom++) { 
-    //                 $con[$baris][$kolom] = 0;
-    //                 if($baris != $kolom){
-
-    //                 for ($j=0; $j < 5; $j++) {
-                         
-    //                     if ($al[$baris][$j] >= $al[$kolom][$j]) {
-    //                         $con[$baris][$j] = $sub[$baris][$j];
-
-    //                     }else{
-
-    //                         $dis = 0;     
-    //                     }
-    //                 }
-
-    //             }
-    //         }
-    //     }
-
+  
 
 
 //Mencari Corcondance Index

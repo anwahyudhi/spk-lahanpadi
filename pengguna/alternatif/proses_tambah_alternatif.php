@@ -20,3 +20,10 @@ echo "<script>alert('Data Alternatif gagal ditambahkan');document.location='data
 
 
  ?>
+
+
+
+
+
+
+

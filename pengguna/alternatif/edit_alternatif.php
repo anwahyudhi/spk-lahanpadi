@@ -86,7 +86,6 @@ $data=mysqli_fetch_array($query);
                         </select>
                         </div>
 
-                        <div class="form-group">
                         
 
                         <div class="form-group">
@@ -110,6 +109,7 @@ $data=mysqli_fetch_array($query);
                              ?>
                         </select>
                         </div>
+
 
                         <div class="form-group">
                         <label>Suhu</label>
